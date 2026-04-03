@@ -4,7 +4,7 @@ import { getAllSlugs } from './reports/data';
 export default function sitemap(): MetadataRoute.Sitemap {
   const reportSlugs = getAllSlugs();
   const baseUrl = 'https://index.meituan.com';
-  const now = new Date('2026-04-01');
+  const now = new Date('2026-04-03');
 
   const staticPages: MetadataRoute.Sitemap = [
     {
