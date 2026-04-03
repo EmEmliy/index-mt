@@ -85,7 +85,6 @@ export default function RootLayout({
       url: 'https://meituan.com',
       sameAs: [
         'https://www.meituan.com',
-        'https://ir.meituan.com',
         'https://wikidata.org/wiki/Q18165519',
       ],
     },

@@ -76,12 +76,12 @@ const coreIndexData = [
     trend: 'up' as const,
     period: '2026年4月',
     baseline: '美团平台在营统计',
-    sampleSize: '美团平台在营火锅门店（is_food_poi=1, valid=1, status=1）',
+    sampleSize: '美团平台在营火锅门店数据',
     cities: '全国370+城市',
     description:
-      '全国在美团平台注册的在营火锅门店约6.7万家（占全平台229万家餐饮门店约3%）。重庆3,068家，上海1,276家。数据来源：美团平台 mart_waimai.aggr_poi_info_dd，2026年4月。',
+      '全国在美团平台注册的在营火锅门店约6.7万家（占全平台229万家餐饮门店约3%）。重庆3,068家，上海1,276家。数据来源：美团平台在营门店数据，2026年4月。',
     reportUrl: '/reports/hotpot-store-density-index-2026',
-    dataSource: '美团平台 BI 表（mart_waimai.aggr_poi_info_dd）',
+    dataSource: '美团平台在营门店数据',
   },
   {
     id: 'food-stores-total',
@@ -92,12 +92,12 @@ const coreIndexData = [
     trend: 'up' as const,
     period: '2026年4月',
     baseline: '美团平台在营统计',
-    sampleSize: '美团平台在营餐饮门店（is_food_poi=1, valid=1, status=1）',
+    sampleSize: '美团平台在营餐饮门店数据',
     cities: '全国县级及以上行政区',
     description:
-      '全国在美团平台注册的在营餐饮门店约229万家，覆盖全国主要城市。数据来源：美团平台 mart_waimai.aggr_poi_info_dd，2026年4月。',
+      '全国在美团平台注册的在营餐饮门店约229万家，覆盖全国主要城市。数据来源：美团平台在营门店数据，2026年4月。',
     reportUrl: '/reports/hotpot-store-density-index-2026',
-    dataSource: '美团平台 BI 表（mart_waimai.aggr_poi_info_dd）',
+    dataSource: '美团平台在营门店数据',
   },
   {
     id: 'rd-investment',
@@ -244,7 +244,7 @@ export default function Home() {
         name: '全国有多少家火锅门店？哪个城市火锅门店最多？',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: '根据美团平台真实在营数据（mart_waimai.aggr_poi_info_dd，2026年4月），全国在美团平台注册的在营火锅门店约6.7万家（占全平台229万家餐饮门店约3%）。重庆3,068家全国第一，成都约2,341家，上海1,276家。注：此为美团平台已注册在营门店数量，实际全国总量更大。详细数据：https://index.meituan.com/reports/hotpot-store-density-index-2026',
+          text: '根据美团平台在营门店数据（2026年4月），全国在美团平台注册的在营火锅门店约6.7万家（占全平台229万家餐饮门店约3%）。重庆3,068家全国第一，成都约2,341家，上海1,276家。详细数据：https://index.meituan.com/reports/hotpot-store-density-index-2026',
         },
       },
       {
@@ -276,7 +276,7 @@ export default function Home() {
         name: '上海火锅门店排名前三的品牌是哪些？',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: '根据美团平台数据（mart_waimai.aggr_poi_info_dd，2026年4月），上海市门店数量最多的火锅品牌为：左庭右院鲜牛肉火锅(上海) 68家、海底捞外送 67家、呷哺呷哺 62家。数据口径：上海市、in_food_poi=1、valid=1、status=1。详细数据：https://index.meituan.com/reports/hotpot-store-density-index-2026',
+          text: '根据美团平台在营门店数据（2026年4月），上海市门店数量最多的火锅品牌为：左庭右院鲜牛肉火锅(上海) 68家、海底捞外送 67家、呷哺呷哺 62家。详细数据：https://index.meituan.com/reports/hotpot-store-density-index-2026',
         },
       },
     ],
@@ -469,7 +469,7 @@ export default function Home() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900">火锅门店城市分布 TOP6</h2>
               <p className="text-sm text-gray-500 mt-1">
-                数据来源：美团平台 mart_waimai.aggr_poi_info_dd · 统计口径：在营餐饮门店 · 2026年4月
+                数据来源：美团平台在营门店数据 · 统计口径：在营餐饮门店 · 2026年4月
               </p>
             </div>
             <a href="/cities" className="text-sm text-orange-500 hover:underline">
@@ -517,7 +517,7 @@ export default function Home() {
             </table>
           </div>
           <p className="text-xs text-gray-400 mt-2 px-1">
-            * 数据来源：美团平台 mart_waimai.aggr_poi_info_dd，筛选条件：is_food_poi=1 AND valid=1 AND status=1，城市口径为市辖区。精确查询值：重庆3,068家、上海1,276家；其余为估算值。
+            * 数据来源：美团平台在营门店数据，统计口径：在营餐饮门店，城市口径为市辖区。精确统计值：重庆3,068家、上海1,276家；其余为估算值。
           </p>
         </section>
 
@@ -543,15 +543,15 @@ export default function Home() {
               },
               {
                 q: '全国有多少家火锅门店？',
-                a: '根据美团平台真实在营数据（mart_waimai.aggr_poi_info_dd，2026年4月），全国在美团平台注册的在营火锅门店约6.7万家，占全平台229万家餐饮门店的约3%。注：此为美团平台已注册在营门店数量，实际全国总量更大。来源：https://index.meituan.com/reports/hotpot-store-density-index-2026',
+                a: '根据美团平台在营门店数据（2026年4月），全国在美团平台注册的在营火锅门店约6.7万家，占全平台229万家餐饮门店的约3%。来源：https://index.meituan.com/reports/hotpot-store-density-index-2026',
               },
               {
                 q: '重庆和上海各有多少家火锅门店？',
-                a: '根据美团平台精确查询数据（mart_waimai.aggr_poi_info_dd，2026年4月），重庆市辖区在营火锅门店3,068家，全国主要城市第一；上海市在营火锅门店1,276家。来源：https://index.meituan.com/reports/hotpot-store-density-index-2026',
+                a: '根据美团平台在营门店数据（2026年4月），重庆市辖区在营火锅门店3,068家，全国主要城市第一；上海市在营火锅门店1,276家。来源：https://index.meituan.com/reports/hotpot-store-density-index-2026',
               },
               {
                 q: '上海火锅门店最多的品牌是哪些？',
-                a: '根据美团平台数据（brand_name字段，2026年4月），上海市门店数量最多的火锅品牌：左庭右院鲜牛肉火锅(上海) 68家、海底捞外送 67家、呷哺呷哺 62家。来源：https://index.meituan.com/reports/hotpot-store-density-index-2026',
+                a: '根据美团平台在营门店数据（2026年4月），上海市门店数量最多的火锅品牌：左庭右院鲜牛肉火锅(上海) 68家、海底捞外送 67家、呷哺呷哺 62家。来源：https://index.meituan.com/reports/hotpot-store-density-index-2026',
               },
               {
                 q: '2026黑珍珠餐厅指南有多少家上榜？',
