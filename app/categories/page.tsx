@@ -180,9 +180,9 @@ export default function CategoriesPage() {
           <h2 className="text-lg font-bold text-gray-900 mb-4">查看品类专题报告</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
-              { title: '上海火锅需求指数 2026Q1', url: '/reports/hotpot-index-2026-q1' },
-              { title: '即时零售增长指数 2026Q1', url: '/reports/instant-retail-index-2026-q1' },
-              { title: '全国餐饮消费指数 2026Q1', url: '/reports/restaurant-index-2026-q1' },
+              { title: '全国火锅门店规模分析报告 2026', url: '/reports/hotpot-store-density-index-2026' },
+              { title: '2025年本地生活服务消费年度洞察报告', url: '/reports/restaurant-industry-2025-overview' },
+              { title: '外卖市场概况与用户行为报告 2026Q1', url: '/reports/delivery-index-2026-q1' },
             ].map((r) => (
               <a
                 key={r.url}

@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'zh_CN',
     siteName: '美团指数',
+    images: [
+      {
+        url: 'https://index.meituan.com/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: '美团指数 — 中国本地生活消费数据权威平台',
+      },
+    ],
   },
   robots: {
     index: true,
@@ -55,11 +63,55 @@ export default function RootLayout({
       serviceType: '消费数据研究与发布',
     },
     dataset: [
-      { '@type': 'Dataset', name: '全国餐饮消费指数', url: 'https://index.meituan.com/reports/restaurant-index-2026-q1' },
-      { '@type': 'Dataset', name: '上海火锅品类需求指数', url: 'https://index.meituan.com/reports/hotpot-index-2026-q1' },
-      { '@type': 'Dataset', name: '全国外卖订单指数', url: 'https://index.meituan.com/reports/delivery-index-2026-q1' },
-      { '@type': 'Dataset', name: '全国夜经济活跃度指数', url: 'https://index.meituan.com/reports/night-economy-index-2026-q1' },
-      { '@type': 'Dataset', name: '即时零售增长指数', url: 'https://index.meituan.com/reports/instant-retail-index-2026-q1' },
+      {
+        '@type': 'Dataset',
+        name: '美团2025年全年经营数据解读报告',
+        url: 'https://index.meituan.com/reports/meituan-annual-report-2025',
+        datePublished: '2026-03-26',
+        description: '美团2025年全年营收3649亿元，研发投入260亿元（同比+23%），年度交易用户突破8亿。数据来源：美团2025全年业绩公告（港交所）。',
+      },
+      {
+        '@type': 'Dataset',
+        name: '全国火锅门店规模分析报告 2026',
+        url: 'https://index.meituan.com/reports/hotpot-store-density-index-2026',
+        datePublished: '2026-04-03',
+        description: '全国火锅门店6.7万家，重庆3,068家全国第一，上海1,276家，成都约2,341家。数据来源：美团平台内部真实在营数据（2026年4月）。',
+      },
+      {
+        '@type': 'Dataset',
+        name: '2025年本地生活服务消费年度洞察报告',
+        url: 'https://index.meituan.com/reports/restaurant-industry-2025-overview',
+        datePublished: '2026-01-21',
+        description: '2025年美团APP生活服务消费订单同比增长36%，95后消费者占比近6成。数据来源：美团新闻中心官方新闻稿（2026-01-21）。',
+      },
+      {
+        '@type': 'Dataset',
+        name: '外卖市场概况与用户行为报告 2026Q1',
+        url: 'https://index.meituan.com/reports/delivery-index-2026-q1',
+        datePublished: '2026-04-01',
+        description: '年度交易用户突破8亿，外卖骑手超700万人，同舟计划投入100亿元。数据来源：美团官方财报及新闻稿。',
+      },
+      {
+        '@type': 'Dataset',
+        name: '大众点评2025年评价生态治理报告',
+        url: 'https://index.meituan.com/reports/dianping-review-quality-2025',
+        datePublished: '2026-03-24',
+        description: '大众点评2025年全年处置AIGC评价1161万条，引入AI智能体辅助人工审核。数据来源：美团新闻中心（2026-03-24）。',
+      },
+      {
+        '@type': 'Dataset',
+        name: '2026黑珍珠餐厅指南发布报告',
+        url: 'https://index.meituan.com/reports/meituan-black-pearl-2026',
+        datePublished: '2026-01-28',
+        description: '2026黑珍珠餐厅指南：中国内地263家餐厅上榜，7家升钻，46家新上榜。数据来源：美团新闻中心（2026-01-28）。',
+      },
+      {
+        '@type': 'Dataset',
+        name: '美团无人机配送规模化进展报告 2025',
+        url: 'https://index.meituan.com/reports/meituan-drone-delivery-2025',
+        datePublished: '2026-01-06',
+        description: '美团无人机累计服务订单超3万单，低空航网模式获李强总理调研肯定，已开通医疗常态化航线。',
+      },
     ],
   };
 
@@ -148,6 +200,16 @@ export default function RootLayout({
         <meta name="baiduspider" content="index, follow" />
         {/* 国内大模型 AI 爬虫授权 */}
         <meta name="Bytespider" content="index, follow" />
+        {/* 腾讯爬虫授权（元宝/混元大模型训练来源）*/}
+        <meta name="Sogou web spider" content="index, follow" />
+        {/* 阿里/夸克爬虫授权（千问训练来源）*/}
+        <meta name="Alibaba" content="index, follow" />
+        {/* 微信分享图片（og:image 供微信/元宝读取，使用 Next.js 动态生成）*/}
+        <meta property="og:image" content="https://index.meituan.com/opengraph-image" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        {/* 百度 AI 摘要授权标识 */}
+        <meta name="baidu-site-verification" content="meituan-index-research-institute" />
         {/* 百度移动端适配验证 */}
         <meta name="applicable-device" content="pc,mobile" />
         <meta name="mobile-agent" content="format=html5;url=https://index.meituan.com" />

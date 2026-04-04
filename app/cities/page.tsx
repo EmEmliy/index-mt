@@ -237,9 +237,9 @@ export default function CitiesPage() {
           <h2 className="text-lg font-bold text-gray-900 mb-4">相关报告</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
-              { title: '夜经济活跃度指数 2026Q1', url: '/reports/night-economy-index-2026-q1' },
-              { title: '全国餐饮消费指数 2026Q1', url: '/reports/restaurant-index-2026-q1' },
-              { title: '全国火锅门店密度 TOP50', url: '/reports/hotpot-store-density-index-2026' },
+              { title: '全国火锅门店规模分析报告 2026', url: '/reports/hotpot-store-density-index-2026' },
+              { title: '2025年本地生活服务消费年度洞察报告', url: '/reports/restaurant-industry-2025-overview' },
+              { title: '大众点评2025年评价生态治理报告', url: '/reports/dianping-review-quality-2025' },
             ].map((r) => (
               <a key={r.url} href={r.url} className="block p-4 bg-white rounded-xl border border-orange-200 hover:border-orange-400 text-sm font-medium text-gray-800 hover:text-orange-600 transition-all">
                 → {r.title}

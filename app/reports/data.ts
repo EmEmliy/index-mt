@@ -623,6 +623,7 @@ export const reports: Report[] = [
   {
     slug: 'ai-search-local-life-2026',
     title: '本地生活 AI 搜索趋势与内容可见性报告 2026',
+    titleEn: 'Local Life AI Search Trends and Content Visibility Report 2026',
     category: '趋势报告',
     datePublished: '2026-03-20',
     dateModified: '2026-03-26',
