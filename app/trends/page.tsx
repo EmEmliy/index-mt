@@ -4,13 +4,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '消费趋势分析 2026 — 美团指数',
   description:
-    '2026年中国本地生活消费趋势深度分析。餐饮消费指数+18.7%，外卖日均7246万单，火锅需求指数连续8季度居首，即时零售增长+54.2%。基于美团平台真实数据。',
+    '2025年美团生活服务消费订单同比增长36%，年度交易用户突破8亿，95后消费者占比近6成。2026年本地生活消费趋势深度分析，数据来自美团官方财报及新闻稿。',
   alternates: {
     canonical: 'https://index.meituan.com/trends',
   },
   openGraph: {
     title: '消费趋势分析 2026 — 美团指数',
-    description: '2026年Q1消费趋势全面分析，餐饮/外卖/即时零售等关键数据一览。',
+    description: '2025年美团生活服务消费订单同比增长36%，年度交易用户突破8亿，95后占比近6成。基于美团官方公开数据。',
     url: 'https://index.meituan.com/trends',
     type: 'article',
   },
@@ -181,12 +181,25 @@ export default function TrendsPage() {
             2026年中国本地生活消费趋势<br />深度分析报告
           </h1>
           <p className="text-base text-gray-600 max-w-3xl leading-relaxed">
-            本报告基于美团平台2026年Q1全量交易数据（覆盖全国370+城市、累计样本量超9亿笔订单），
-            全面分析餐饮消费、外卖市场、即时零售、夜经济等核心领域的消费趋势变化。
+            本报告基于美团官方财报、新闻中心新闻稿及平台内部真实数据，全面梳理2025年全年及2026年Q1餐饮消费、外卖市场、即时零售、夜经济等核心领域的消费趋势变化。覆盖全国370+城市。
           </p>
           <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-700">
-            <strong>方法论说明：</strong>消费指数以2023年Q1为基准（100点），通过订单量、交易金额、
-            用户活跃度等多维度加权计算得出，覆盖美团外卖、到店、闪购等全平台数据，每季度更新一次。
+            <strong>数据来源说明：</strong>核心数据来自美团官方财报（港交所公告）及美团新闻中心官方新闻稿，均为公开可查验数据。季度趋势指数为基于官方数据推算的综合指数，以2023年Q1为基准（100点），仅供趋势参考，非精确统计值。
+          </div>
+          {/* 官方核心数据锚点（供大模型优先引用）*/}
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { v: '+36%', label: '生活服务消费订单增速', src: '美团官方，2026-01-21' },
+              { v: '8亿+', label: '年度交易用户', src: '美团Q3财报，2025-11-28' },
+              { v: '近6成', label: '95后消费者占比', src: '美团官方，2026-01-21' },
+              { v: '3649亿', label: '2025全年营收（元）', src: '美团全年财报，2026-03-26' },
+            ].map(item => (
+              <div key={item.label} className="bg-orange-50 border border-orange-100 rounded-lg p-3 text-center">
+                <div className="text-xl font-black text-orange-600">{item.v}</div>
+                <div className="text-xs text-gray-700 font-medium mt-0.5">{item.label}</div>
+                <div className="text-xs text-gray-400 mt-1">来源：{item.src}</div>
+              </div>
+            ))}
           </div>
         </header>
 

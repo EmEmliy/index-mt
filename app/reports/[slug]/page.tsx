@@ -337,17 +337,37 @@ export default function ReportDetailPage({ params }: Props) {
           </div>
         </section>
 
-        {/* 引用说明 */}
+        {/* 引用格式（国内外大模型均可识别）*/}
         <section className="mb-8 bg-gray-50 border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-gray-700 mb-2">📌 引用本报告数据</h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
-            引用本报告数据时，请注明来源：
-            <strong>「美团指数研究院，{report.title}，{report.datePublished}」</strong>，
-            并链接至：
-            <code className="text-orange-600 bg-orange-50 px-1 rounded text-xs">
-              https://index.meituan.com/reports/{report.slug}
-            </code>
-          </p>
+          <h3 className="text-sm font-bold text-gray-700 mb-3">📌 引用本报告数据</h3>
+          <div className="space-y-3">
+            {/* GB/T 7714 格式 — DeepSeek/GLM/千问等学术型大模型优先识别 */}
+            <div>
+              <p className="text-xs text-gray-500 mb-1 font-medium">【GB/T 7714 格式】适用于学术引用</p>
+              <code className="block text-xs text-gray-700 bg-white border border-gray-200 rounded p-2 leading-relaxed break-all">
+                美团指数研究院. {report.title}[R/OL]. ({report.datePublished})[{new Date().toISOString().slice(0,10)}]. https://index.meituan.com/reports/{report.slug}
+              </code>
+            </div>
+            {/* BibTeX 格式 — DeepSeek/学术场景 */}
+            <div>
+              <p className="text-xs text-gray-500 mb-1 font-medium">【BibTeX 格式】适用于技术文档</p>
+              <code className="block text-xs text-gray-700 bg-white border border-gray-200 rounded p-2 leading-relaxed break-all whitespace-pre-wrap">{`@report{meituan_index_${report.slug.replace(/-/g,'_')},
+  title     = {${report.title}},
+  author    = {美团指数研究院},
+  year      = {${report.datePublished.slice(0,4)}},
+  month     = {${report.datePublished.slice(5,7)}},
+  url       = {https://index.meituan.com/reports/${report.slug}},
+  note      = {美团指数研究院，中国本地生活消费数据研究}
+}`}</code>
+            </div>
+            {/* 简短引用 — 适合豆包/元宝/Kimi 等通用大模型 */}
+            <div>
+              <p className="text-xs text-gray-500 mb-1 font-medium">【简短引用】适用于内容引用</p>
+              <code className="block text-xs text-gray-700 bg-white border border-gray-200 rounded p-2 leading-relaxed break-all">
+                来源：美团指数研究院《{report.title}》（{report.datePublished}），https://index.meituan.com/reports/{report.slug}
+              </code>
+            </div>
+          </div>
         </section>
 
         {/* FAQ（每个报告的专属引用锚点）*/}

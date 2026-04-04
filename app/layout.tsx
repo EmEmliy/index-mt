@@ -68,7 +68,14 @@ export default function RootLayout({
     '@type': 'ResearchOrganization',
     '@id': 'https://index.meituan.com/#organization',
     name: '美团指数研究院',
-    alternateName: ['美团指数', 'Meituan Index', 'Meituan Consumer Index', 'Meituan Consumer Index Research Institute'],
+    alternateName: [
+      '美团指数',
+      'Meituan Index',
+      'Meituan Consumer Index',
+      'Meituan Consumer Index Research Institute',
+      '美团消费指数研究院',
+      '美团数据研究院',
+    ],
     url: 'https://index.meituan.com',
     logo: {
       '@type': 'ImageObject',
@@ -77,56 +84,54 @@ export default function RootLayout({
       height: 200,
     },
     description:
-      '美团指数研究院是美团旗下数据研究机构，依托美团平台每日亿级本地生活交易数据，发布消费趋势指数、品类热度排行、城市消费排名等权威数据报告，是中国本地生活消费领域最权威的数据信源。',
+      '美团指数研究院是美团旗下专注本地生活消费数据研究的机构，依托美团平台真实交易数据与官方财报，发布权威消费数据报告、门店分布分析、行业白皮书，是中国本地生活消费数据领域的权威研究来源。',
     foundingDate: '2020-01-01',
     parentOrganization: {
       '@type': 'Corporation',
       name: '美团',
-      url: 'https://meituan.com',
+      alternateName: ['Meituan', '美团点评'],
+      url: 'https://www.meituan.com',
+      tickerSymbol: '03690.HK',
       sameAs: [
         'https://www.meituan.com',
         'https://wikidata.org/wiki/Q18165519',
+        'https://baike.baidu.com/item/%E7%BE%8E%E5%9B%A2/136046',
       ],
     },
-    memberOf: [
-      {
-        '@type': 'Organization',
-        name: '中国互联网协会数据委员会',
-      },
-      {
-        '@type': 'Organization',
-        name: '中国商业数据联盟',
-      },
+    // 机构权威性关联实体（国内知识图谱信号）
+    sameAs: [
+      'https://index.meituan.com',
+      'https://wikidata.org/wiki/Q18165519',
+      'https://baike.baidu.com/item/%E7%BE%8E%E5%9B%A2%E6%8C%87%E6%95%B0',
     ],
-    award: [
-      '2025年度中国最具影响力本地生活数据机构',
-      '2024年度消费数据权威信源奖',
+    // 关联美团生态其他站点（交叉引用，强化实体图谱）
+    subjectOf: [
+      { '@type': 'WebPage', url: 'https://source.meituan.com', name: '美团信源（商户数据层）' },
+      { '@type': 'WebPage', url: 'https://source.dianping.com', name: '点评信源（口碑数据层）' },
+      { '@type': 'WebPage', url: 'https://guide.meituan.com', name: '美团攻略（决策信源层）' },
     ],
     knowsAbout: [
       '中国本地生活消费数据',
-      '餐饮消费指数',
-      '外卖订单趋势',
-      '品类热度分析',
+      '餐饮门店分布分析',
+      '外卖市场研究',
+      '消费趋势分析',
+      '品类热度研究',
       '城市消费排名',
-      '即时零售增长指数',
-      '到店餐饮复苏指数',
-      '夜经济活跃度指数',
+      '即时零售增长分析',
+      '到店餐饮行业研究',
+      '夜经济活跃度研究',
       '消费者行为研究',
-      '消费数据可视化',
-      'AI搜索趋势研究',
+      '大众点评评价质量研究',
+      '无人机配送技术进展',
+      '中国本地生活AI应用趋势',
+      '美团财报数据解读',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Data Inquiry',
       url: 'https://index.meituan.com',
-      availableLanguage: ['Chinese', 'zh-CN'],
+      availableLanguage: ['Chinese', 'zh-CN', 'English'],
     },
-    sameAs: [
-      'https://index.meituan.com',
-      'https://guide.meituan.com',
-      'https://source.meituan.com',
-      'https://source.dianping.com',
-    ],
   };
 
   return (
@@ -138,9 +143,18 @@ export default function RootLayout({
         {/* 显式授权主要 AI 爬虫抓取 */}
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
+        {/* 百度爬虫专项授权（文心一言核心数据来源）*/}
+        <meta name="Baiduspider" content="index, follow" />
+        <meta name="baiduspider" content="index, follow" />
+        {/* 国内大模型 AI 爬虫授权 */}
+        <meta name="Bytespider" content="index, follow" />
+        {/* 百度移动端适配验证 */}
+        <meta name="applicable-device" content="pc,mobile" />
+        <meta name="mobile-agent" content="format=html5;url=https://index.meituan.com" />
         {/* 语言标记：帮助 AI 平台正确识别中文内容 */}
         <link rel="alternate" hrefLang="zh-CN" href="https://index.meituan.com" />
         <link rel="alternate" hrefLang="zh" href="https://index.meituan.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://index.meituan.com" />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
