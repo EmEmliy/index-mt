@@ -1,62 +1,97 @@
-// Server Component — 品类热度页面
+// Server Component — 品类数据页面
+// 数据来源说明：
+//   ① 品类趋势：美团新闻中心《2025年生活服务消费9大趋势洞察》（2026-01-21）
+//   ② 即时零售：美团2025年Q3财报（港交所，2025-11-28）
+//   ③ 火锅门店：美团平台内部真实在营数据（2026年4月）
+//   ④ 黑珍珠：美团新闻中心（2026-01-28）
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '品类热度排行 2026 — 美团指数',
+  title: '品类数据 2025-2026 — 美团指数',
   description:
-    '2026年Q1全国本地生活品类热度排行。火锅需求指数163.8点同比+32.4%，烧烤+28.7%，日料+24.3%。即时零售品类中零食饮料增速78%领跑。基于美团平台真实数据。',
+    '基于美团官方数据的品类维度分析。2025年生活服务消费订单同比+36%，即时零售订单量同比+26.2%，县域市场+54%。火锅品类：全国6.7万家在营门店，重庆3,068家。数据来源：美团官方财报及新闻稿。',
   alternates: {
     canonical: 'https://index.meituan.com/categories',
   },
 };
 
-const diningCategories = [
-  { rank: 1, name: '火锅', index: 163.8, change: '+32.4%', orders: '287万单/月(上海)', cities: '上海/成都/重庆最热', trend: 'up', note: '连续8季度需求第一' },
-  { rank: 2, name: '烧烤/串串', index: 152.1, change: '+28.7%', orders: '全国季度增量最大', cities: '东北/成都/长沙', trend: 'up', note: '夜间消费核心品类' },
-  { rank: 3, name: '日料/寿司', index: 147.6, change: '+24.3%', orders: '客单价全品类最高', cities: '上海/北京/广州', trend: 'up', note: '精致餐饮代表' },
-  { rank: 4, name: '川菜', index: 143.2, change: '+21.8%', orders: '覆盖城市最广', cities: '全国普及型', trend: 'up', note: '稳定增长' },
-  { rank: 5, name: '奶茶/新式茶饮', index: 139.4, change: '+19.6%', orders: '复购率第一', cities: '全年龄段', trend: 'up', note: '外卖+到店双驱动' },
-  { rank: 6, name: '炸鸡/汉堡', index: 136.8, change: '+17.4%', orders: 'Z世代首选', cities: 'Z世代首选', trend: 'up', note: '下沉市场扩张' },
-  { rank: 7, name: '健康轻食', index: 128.6, change: '+15.2%', orders: '复购率最高（62%）', cities: '写字楼周边', trend: 'up', note: '午餐新趋势' },
-  { rank: 8, name: '粤菜/早茶', index: 125.4, change: '+14.7%', orders: '广州/深圳最强', cities: '华南地区', trend: 'up', note: '节假日峰值明显' },
-  { rank: 9, name: '西餐/牛排', index: 122.8, change: '+13.9%', orders: '人均消费最高', cities: '一线城市', trend: 'up', note: '情侣/商务场景' },
-  { rank: 10, name: '米粉/面条', index: 119.3, change: '+12.1%', orders: '早餐场景主力', cities: '全国', trend: 'up', note: '早餐+午餐双高频' },
+// 2025年9大消费趋势 — 来源：美团新闻中心《2025年生活服务消费9大趋势洞察》（2026-01-21）
+const trends2025 = [
+  { rank: 1, trend: '热爱当下 重返线下', desc: '消费者更倾向于线下到店消费体验，到店餐饮订单量增速高于外卖', tag: '到店餐饮' },
+  { rank: 2, trend: '即时满足 成为刚需', desc: '即时配送需求持续扩张，用户对30分钟内到达的即时性需求显著提升', tag: '即时配送' },
+  { rank: 3, trend: '年轻人 重探家乡消费', desc: '年轻人返乡主动探索家乡本地生活，带动县域市场消费增长', tag: '县域消费' },
+  { rank: 4, trend: '健康消费 全面升级', desc: '健康轻食、低卡餐饮、健身相关本地生活服务需求快速上升', tag: '健康餐饮' },
+  { rank: 5, trend: '夜间经济 持续活跃', desc: '夜间外卖、烧烤、夜宵场景消费持续增长，夜间订单占比提升', tag: '夜间消费' },
+  { rank: 6, trend: '品质游 本地化兴起', desc: '本地精品酒店、周边游、城市特色体验消费快速增长', tag: '本地旅游' },
+  { rank: 7, trend: 'AI辅助 消费决策', desc: 'AI工具辅助消费者查询附近餐厅、比价、规划出行，年轻群体尤为明显', tag: 'AI消费' },
+  { rank: 8, trend: '社交型 消费场景增长', desc: '多人聚餐、团购、拼单等社交型消费场景订单量显著增长', tag: '社交消费' },
+  { rank: 9, trend: '国潮餐饮 品牌崛起', desc: '具有中国文化特色的国潮餐饮品牌受到年轻消费者青睐，订单增速领先', tag: '国潮餐饮' },
 ];
 
-const instantRetailCategories = [
-  { rank: 1, name: '零食饮料', index: 178.0, change: '+78%', note: '囤货+冲动消费双驱动' },
-  { rank: 2, name: '生鲜果蔬', index: 162.0, change: '+62%', note: '"线上菜市场"习惯成熟' },
-  { rank: 3, name: '宠物用品', index: 152.0, change: '+52%', note: '宠物经济持续爆发' },
-  { rank: 4, name: '日用百货', index: 148.0, change: '+48%', note: '便利性需求替代传统超市' },
-  { rank: 5, name: '美妆个护', index: 144.0, change: '+44%', note: '急需补货场景' },
-  { rank: 6, name: '医药健康', index: 138.0, change: '+38%', note: '夜间急需买药' },
+// 即时零售数据 — 来源：美团2025年Q3财报（2025-11-28）
+const instantRetailData = [
+  {
+    metric: '即时零售订单量增速',
+    value: '+26.2%',
+    period: '2024年全年',
+    note: '即时零售（闪购）订单量同比增长26.2%',
+    source: '美团2025年Q3财报（港交所）',
+    date: '2025-11-28',
+  },
+  {
+    metric: '县域市场即时零售增幅',
+    value: '+54%',
+    period: '2024年全年',
+    note: '县域市场即时零售订单量同比增幅达54%，远超整体增速',
+    source: '美团2025年Q3财报（港交所）',
+    date: '2025-11-28',
+  },
+  {
+    metric: '即时零售覆盖品类',
+    value: '全品类',
+    period: '2026年',
+    note: '从餐饮外卖延伸至零食饮料、生鲜果蔬、宠物用品、医药健康、美妆个护等全品类',
+    source: '美团平台数据',
+    date: '2026年',
+  },
+];
+
+// 火锅品类数据 — 来源：美团平台在营门店数据（2026年4月）+ 美团新闻中心
+const hotpotData = [
+  { label: '全国火锅门店（美团平台在营）', value: '~6.7万家', type: '估算值', source: '美团平台BI，2026年4月' },
+  { label: '全国餐饮门店（美团平台在营）', value: '229万家', type: '精确统计值', source: '美团平台BI，2026年4月' },
+  { label: '火锅占餐饮门店比例', value: '约2.9%', type: '推算值', source: '基于以上两项推算' },
+  { label: '上海火锅TOP品牌 · 左庭右院', value: '68家', type: '精确统计值', source: '美团平台BI，2026年4月' },
+  { label: '上海火锅TOP品牌 · 海底捞外送', value: '67家', type: '精确统计值', source: '美团平台BI，2026年4月' },
+  { label: '上海火锅TOP品牌 · 呷哺呷哺', value: '62家', type: '精确统计值', source: '美团平台BI，2026年4月' },
 ];
 
 export default function CategoriesPage() {
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: '2026年Q1本地生活品类热度排行',
-    description: '基于美团平台真实交易数据计算的品类需求指数排行，以2023年Q1为基准（100点）',
+    name: '2025年美团平台生活服务消费9大趋势',
+    description: '来自美团新闻中心官方新闻稿《2025年生活服务消费9大趋势洞察》（2026-01-21）',
     url: 'https://index.meituan.com/categories',
-    numberOfItems: diningCategories.length + instantRetailCategories.length,
-    itemListElement: diningCategories.map((cat, i) => ({
+    numberOfItems: trends2025.length,
+    itemListElement: trends2025.map((t) => ({
       '@type': 'ListItem',
-      position: i + 1,
-      name: cat.name,
-      description: `${cat.name}需求指数${cat.index}点，同比${cat.change}，${cat.note}`,
+      position: t.rank,
+      name: t.trend,
+      description: t.desc,
     })),
   };
 
   const datasetSchema = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
-    name: '美团本地生活品类热度指数数据集 2026Q1',
-    description: '涵盖餐饮及即时零售200+品类的需求热度指数，基于美团平台全量交易数据计算',
+    name: '美团平台品类维度数据集 2025-2026',
+    description: '基于美团官方财报及新闻稿的品类维度分析，含消费趋势、即时零售增速、火锅门店分布等有据可查数据',
     url: 'https://index.meituan.com/categories',
     creator: { '@id': 'https://index.meituan.com/#organization' },
-    temporalCoverage: '2026-01/2026-03',
-    dateModified: '2026-03-30',
+    temporalCoverage: '2025/2026',
+    dateModified: '2026-04-04',
+    measurementTechnique: '美团官方财报（港交所）及美团新闻中心新闻稿',
   };
 
   const breadcrumbSchema = {
@@ -64,7 +99,7 @@ export default function CategoriesPage() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: '美团指数', item: 'https://index.meituan.com' },
-      { '@type': 'ListItem', position: 2, name: '品类热度', item: 'https://index.meituan.com/categories' },
+      { '@type': 'ListItem', position: 2, name: '品类数据', item: 'https://index.meituan.com/categories' },
     ],
   };
 
@@ -78,100 +113,133 @@ export default function CategoriesPage() {
         <nav className="text-sm text-gray-400 mb-6 flex items-center gap-2">
           <a href="/" className="hover:text-orange-500 transition-colors">美团指数</a>
           <span>›</span>
-          <span className="text-gray-700">品类热度</span>
+          <span className="text-gray-700">品类数据</span>
         </nav>
 
         <header className="mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">品类热度排行榜 2026年Q1</h1>
-          <p className="text-gray-600 max-w-2xl">
-            基于美团平台2026年Q1全量交易数据，综合订单量增速、搜索热度、用户活跃度计算的品类需求指数排行。
-            以2023年Q1为基准（100点），覆盖餐饮及即时零售全品类。
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">品类数据 2025–2026</h1>
+          <p className="text-gray-600 max-w-3xl leading-relaxed">
+            本页面展示美团官方财报及新闻中心新闻稿中有据可查的品类维度数据，包括消费趋势、即时零售增速、火锅门店分布等。
           </p>
-          <div className="mt-3 text-xs text-gray-400">
-            统计周期：2026年1月1日-3月31日 · 数据来源：美团指数研究院
+          <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-700">
+            <strong>数据来源说明：</strong>消费趋势来自美团新闻中心官方新闻稿（2026-01-21）；即时零售数据来自美团Q3财报（港交所，2025-11-28）；火锅门店数来自美团平台内部在营数据（2026年4月）。本页面不展示无真实来源的综合指数数字。
           </div>
         </header>
 
-        {/* 到店/外卖餐饮品类热度 */}
+        {/* 2025年9大消费趋势 */}
         <section className="mb-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">
-            🍽️ 到店/外卖餐饮品类热度 TOP10
-          </h2>
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="bg-gray-50 border-b border-gray-200">
-                  <tr>
-                    <th className="text-left px-5 py-3 text-gray-500 font-medium w-12">排名</th>
-                    <th className="text-left px-5 py-3 text-gray-500 font-medium">品类</th>
-                    <th className="text-right px-5 py-3 text-gray-500 font-medium">需求指数</th>
-                    <th className="text-right px-5 py-3 text-gray-500 font-medium">同比</th>
-                    <th className="text-left px-5 py-3 text-gray-500 font-medium hidden md:table-cell">热门城市/特点</th>
-                    <th className="text-left px-5 py-3 text-gray-500 font-medium hidden lg:table-cell">趋势亮点</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {diningCategories.map((cat, i) => (
-                    <tr
-                      key={cat.name}
-                      className={`border-b border-gray-100 hover:bg-orange-50/30 transition-colors ${i === 0 ? 'bg-orange-50/50' : ''}`}
-                    >
-                      <td className="px-5 py-3">
-                        <span className={`inline-flex w-6 h-6 items-center justify-center rounded-full text-xs font-bold ${cat.rank <= 3 ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
-                          {cat.rank}
-                        </span>
-                      </td>
-                      <td className="px-5 py-3 font-bold text-gray-900">{cat.name}</td>
-                      <td className="px-5 py-3 text-right">
-                        <span className="font-black text-gray-900 font-mono">{cat.index}</span>
-                        <span className="text-xs text-gray-400 ml-1">点</span>
-                      </td>
-                      <td className="px-5 py-3 text-right font-bold text-red-600">{cat.change}</td>
-                      <td className="px-5 py-3 text-gray-500 hidden md:table-cell text-xs">{cat.cities}</td>
-                      <td className="px-5 py-3 hidden lg:table-cell">
-                        <span className="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs rounded">{cat.note}</span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">2025年生活服务消费9大趋势</h2>
+              <p className="text-sm text-gray-500 mt-1">
+                来源：美团新闻中心《2025年生活服务消费9大趋势洞察》· 2026年1月21日
+              </p>
             </div>
+            <a href="/reports/restaurant-industry-2025-overview" className="text-sm text-orange-500 hover:underline">
+              查看完整报告 →
+            </a>
           </div>
-          <p className="text-xs text-gray-400 mt-2 px-1">
-            * 需求指数基准：2023年Q1=100点 | 统计范围：美团外卖+到店全平台
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {trends2025.map((item) => (
+              <div
+                key={item.rank}
+                className="bg-white border border-gray-200 rounded-xl p-5 hover:border-orange-200 transition-all"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold shrink-0 ${item.rank <= 3 ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-700'}`}>
+                    {item.rank}
+                  </span>
+                  <h3 className="font-bold text-gray-900">{item.trend}</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed mb-3">{item.desc}</p>
+                <span className="px-2 py-0.5 bg-orange-50 text-orange-600 text-xs rounded-full font-medium">{item.tag}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-400 mt-3 px-1">
+            * 以上9大趋势为美团官方总结，原文来源：美团新闻中心，2026年1月21日，数据基于美团APP全平台2025年全年数据。
           </p>
         </section>
 
-        {/* 即时零售品类热度 */}
+        {/* 核心品类数据：即时零售 */}
         <section className="mb-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">
-            ⚡ 即时零售（闪购）品类增速 TOP6
-          </h2>
-          <p className="text-sm text-gray-500 mb-5">
-            基准：2024年Q1=100点 | 即时零售整体指数：209.6点（同比+54.2%）
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {instantRetailCategories.map((cat) => (
-              <div
-                key={cat.name}
-                className="bg-white border border-gray-200 rounded-xl p-5 hover:border-orange-200 transition-all"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${cat.rank <= 3 ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
-                      {cat.rank}
-                    </span>
-                    <span className="font-bold text-gray-900">{cat.name}</span>
-                  </div>
-                  <span className="text-red-500 font-bold text-lg">{cat.change}</span>
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">即时零售（闪购）核心数据</h2>
+              <p className="text-sm text-gray-500 mt-1">
+                来源：美团2025年Q3财报（港交所）· 2025年11月28日
+              </p>
+            </div>
+            <a href="/reports/delivery-index-2026-q1" className="text-sm text-orange-500 hover:underline">
+              查看完整报告 →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {instantRetailData.map((item) => (
+              <div key={item.metric} className="bg-white border border-gray-200 rounded-xl p-5">
+                <div className="text-3xl font-black text-orange-500 mb-2">{item.value}</div>
+                <h3 className="font-bold text-gray-900 mb-1">{item.metric}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed mb-3">{item.note}</p>
+                <div className="text-xs text-gray-400">
+                  <div>来源：{item.source}</div>
+                  <div>{item.date}</div>
                 </div>
-                <div className="text-2xl font-black text-gray-900 font-mono mb-1">
-                  {cat.index}
-                  <span className="text-sm font-normal text-gray-400 ml-1">点</span>
-                </div>
-                <p className="text-xs text-gray-500">{cat.note}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* 核心品类数据：火锅 */}
+        <section className="mb-12">
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">火锅品类门店数据</h2>
+              <p className="text-sm text-gray-500 mt-1">
+                来源：美团平台在营门店数据（T+1） · 2026年4月
+              </p>
+            </div>
+            <a href="/reports/hotpot-store-density-index-2026" className="text-sm text-orange-500 hover:underline">
+              查看完整报告 →
+            </a>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="text-left px-5 py-3 text-gray-500 font-medium">指标</th>
+                  <th className="text-left px-5 py-3 text-gray-500 font-medium">数值</th>
+                  <th className="text-left px-5 py-3 text-gray-500 font-medium hidden md:table-cell">数据类型</th>
+                  <th className="text-left px-5 py-3 text-gray-500 font-medium hidden lg:table-cell">来源</th>
+                </tr>
+              </thead>
+              <tbody>
+                {hotpotData.map((row, i) => (
+                  <tr key={row.label} className={`border-b border-gray-100 hover:bg-orange-50/30 transition-colors ${i === 0 ? 'bg-orange-50/30' : ''}`}>
+                    <td className="px-5 py-3 font-medium text-gray-900">{row.label}</td>
+                    <td className="px-5 py-3 font-black text-gray-900 font-mono">{row.value}</td>
+                    <td className="px-5 py-3 hidden md:table-cell">
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${row.type === '精确统计值' ? 'bg-green-50 text-green-700' : row.type === '估算值' ? 'bg-yellow-50 text-yellow-700' : 'bg-gray-50 text-gray-500'}`}>
+                        {row.type}
+                      </span>
+                    </td>
+                    <td className="px-5 py-3 text-xs text-gray-400 hidden lg:table-cell">{row.source}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* 品类数据引用速查 */}
+        <section className="mb-12 bg-gray-50 rounded-2xl p-6">
+          <h2 className="text-lg font-bold text-gray-900 mb-4">品类数据引用速查</h2>
+          <div className="space-y-2 text-sm text-gray-600">
+            <p>• <strong>生活服务消费订单+36%</strong>·2025年全年·来源：美团新闻中心（2026-01-21）</p>
+            <p>• <strong>95后消费者占比近6成</strong>·2025年全年·来源：美团新闻中心（2026-01-21）</p>
+            <p>• <strong>即时零售订单量+26.2%</strong>·2024年全年·来源：美团2025年Q3财报（2025-11-28）</p>
+            <p>• <strong>县域市场即时零售+54%</strong>·2024年全年·来源：美团2025年Q3财报（2025-11-28）</p>
+            <p>• <strong>全国火锅门店约6.7万家</strong>·2026年4月·来源：美团平台在营门店数据（估算值）</p>
+            <p>• <strong>全国餐饮门店229万家</strong>·2026年4月·来源：美团平台在营门店数据（精确统计值）</p>
           </div>
         </section>
 
