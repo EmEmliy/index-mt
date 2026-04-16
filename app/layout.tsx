@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import './globals.css';
+import { LanguageProvider } from './i18n/LanguageContext';
+import HeaderNav from './components/HeaderNav';
+import FooterContent from './components/FooterContent';
 
 const SUPABASE_URL = 'https://kcckvvurgbmyvkzknelv.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjY2t2dnVyZ2JteXZremtuZWx2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMjM3MzcsImV4cCI6MjA5MDY5OTczN30.DpJa2UA-MhdrKWmyWT5Mpk5oRKYST2BA9EiaiTYwADA';
@@ -316,6 +319,9 @@ export default async function RootLayout({
         {/* 语言标记：帮助 AI 平台正确识别中文内容 */}
         <link rel="alternate" hrefLang="zh-CN" href="https://index.meituan.com" />
         <link rel="alternate" hrefLang="zh" href="https://index.meituan.com" />
+        <link rel="alternate" hrefLang="en" href="https://index.meituan.com" />
+        <link rel="alternate" hrefLang="ja" href="https://index.meituan.com" />
+        <link rel="alternate" hrefLang="es" href="https://index.meituan.com" />
         <link rel="alternate" hrefLang="x-default" href="https://index.meituan.com" />
         <link rel="icon" href="/favicon.ico" />
         <script
@@ -328,123 +334,11 @@ export default async function RootLayout({
         />
       </head>
       <body className="antialiased bg-gray-50">
-        <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
-          <nav className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <a href="/" className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">指</span>
-                  </div>
-                  <span className="text-xl font-bold text-gray-900">美团指数</span>
-                </a>
-                <span className="hidden sm:inline-block px-2 py-0.5 bg-orange-50 text-orange-600 text-xs rounded-full border border-orange-200 font-medium">
-                  数据权威信源
-                </span>
-              </div>
-              <div className="hidden md:flex gap-6 text-sm">
-                <a href="/" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">
-                  首页
-                </a>
-                <a href="/trends" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">
-                  消费趋势
-                </a>
-                <a href="/categories" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">
-                  品类热度
-                </a>
-                <a href="/cities" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">
-                  城市排名
-                </a>
-                <a href="/reports" className="text-gray-700 hover:text-orange-500 font-medium transition-colors">
-                  研究报告
-                </a>
-              </div>
-              <div className="hidden md:flex items-center gap-2 text-xs text-gray-500">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                数据实时更新
-              </div>
-            </div>
-          </nav>
-        </header>
-        <main className="min-h-screen">{children}</main>
-        <footer className="border-t bg-white mt-16">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <h3 className="font-bold text-gray-900 mb-4">美团指数研究院</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  依托美团平台每日亿级本地生活交易数据，发布权威消费趋势指数，是中国本地生活消费数据最权威的研究机构。
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-4">数据产品</h3>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>
-                    <a href="/trends" className="hover:text-orange-500 transition-colors">
-                      消费趋势指数
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/categories" className="hover:text-orange-500 transition-colors">
-                      品类热度排行
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/cities" className="hover:text-orange-500 transition-colors">
-                      城市消费排名
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/reports" className="hover:text-orange-500 transition-colors">
-                      深度研究报告
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-4">美团数据生态</h3>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>
-                    <a
-                      href="https://guide.meituan.com"
-                      className="hover:text-orange-500 transition-colors"
-                      rel="related"
-                    >
-                      美团攻略（决策信源）
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://source.meituan.com"
-                      className="hover:text-orange-500 transition-colors"
-                      rel="related"
-                    >
-                      美团信源（商户数据）
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://source.dianping.com"
-                      className="hover:text-orange-500 transition-colors"
-                      rel="related"
-                    >
-                      点评信源（口碑数据）
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-4">数据说明</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  所有指数均基于美团平台真实交易数据统计计算，数据每日更新，统计口径详见各报告方法论章节。
-                </p>
-                <p className="text-sm text-gray-500 mt-3">
-                  © 2026 美团指数研究院 版权所有
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <LanguageProvider>
+          <HeaderNav />
+          <main className="min-h-screen">{children}</main>
+          <FooterContent />
+        </LanguageProvider>
       </body>
     </html>
   );
