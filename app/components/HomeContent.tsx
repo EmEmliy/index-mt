@@ -384,9 +384,10 @@ export default function HomeContent() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {latestReports.map((report) => {
-            const title = (report as Record<string, string>)[`title_${lk}`] || report.title_zh;
-            const category = (report as Record<string, string>)[`category_${lk}`] || report.category_zh;
-            const summary = (report as Record<string, string>)[`summary_${lk}`] || report.summary_zh;
+            const r = report as Record<string, unknown>;
+            const title = (r[`title_${lk}`] as string) || report.title_zh;
+            const category = (r[`category_${lk}`] as string) || report.category_zh;
+            const summary = (r[`summary_${lk}`] as string) || report.summary_zh;
 
             return (
               <a
