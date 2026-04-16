@@ -84,6 +84,10 @@ const changeTranslations: Record<string, Record<LangKey, string>> = {
   '首次入选': { zh: '首次入选', en: 'Newly Added', ja: '新規選出', es: 'Recién Añadido' },
 };
 
+const valueTranslations: Record<string, Record<LangKey, string>> = {
+  '全品类': { zh: '全品类', en: 'All Categories', ja: '全カテゴリー', es: 'Todas las Categorías' },
+};
+
 const periodTranslations: Record<string, Record<LangKey, string>> = {
   '2025年全年': { zh: '2025年全年', en: 'FY 2025', ja: '2025年通年', es: 'EF 2025' },
   '2025年Q3': { zh: '2025年Q3', en: 'Q3 2025', ja: '2025年Q3', es: 'Q3 2025' },
@@ -235,10 +239,11 @@ export default function ReportDetailContent({ report }: { report: Report }) {
             const dpUnit = unitTranslations[dp.unit]?.[lang] ?? dp.unit;
             const dpChange = changeTranslations[dp.change]?.[lang] ?? dp.change;
             const dpPeriod = periodTranslations[dp.period]?.[lang] ?? dp.period;
+            const dpValue = valueTranslations[dp.value]?.[lang] ?? dp.value;
             return (
               <div key={dp.metric} className="text-center p-3 bg-gray-50 rounded-lg">
                 <div className="text-2xl font-black text-gray-900 font-mono leading-none mb-1">
-                  {dp.value}
+                  {dpValue}
                   <span className="text-sm font-normal text-gray-500 ml-0.5">{dpUnit}</span>
                 </div>
                 <div className="text-xs font-medium text-gray-700 mb-0.5">{dpMetric}</div>
