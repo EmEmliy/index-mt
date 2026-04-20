@@ -84,6 +84,38 @@ const coreIndexData = [
     reportUrl: '/reports/meituan-annual-report-2025',
     dataSource: '美团2025年全年财报（港交所）',
   },
+  {
+    id: 'delivery-riders',
+    title: '外卖骑手累计规模',
+    value: '700万+',
+    unit: '骑手',
+    change: '累计规模',
+    trend: 'up' as const,
+    period: '截至2025年底',
+    baseline: '美团新闻中心',
+    sampleSize: '美团外卖平台骑手累计数据',
+    cities: '覆盖全国370+城市',
+    description:
+      '截至2025年底，美团外卖骑手累计超700万人，"同舟计划"已投入100亿元完善骑手保障体系。数据来源：美团新闻中心（2025年11月21日）。',
+    reportUrl: '/reports/meituan-annual-report-2025',
+    dataSource: '美团新闻中心（2025-11-21）',
+  },
+  {
+    id: 'aigc-reviews',
+    title: '大众点评AIGC评价治理',
+    value: '1,161万',
+    unit: '条',
+    change: '全年处置',
+    trend: 'up' as const,
+    period: '2025年全年',
+    baseline: '美团新闻中心官方披露',
+    sampleSize: '大众点评全平台AIGC内容治理数据',
+    cities: '全国覆盖',
+    description:
+      '大众点评2025年全年共处置AIGC（AI生成内容）评价1161万条，引入AI智能体辅助人工审核，守护用户评价真实性。数据来源：美团新闻中心（2026年3月24日）。',
+    reportUrl: '/reports/dianping-review-quality-2025',
+    dataSource: '美团新闻中心（2026-03-24）',
+  },
 ];
 
 const latestReports = [
@@ -113,6 +145,15 @@ const latestReports = [
       '2026黑珍珠餐厅指南正式发布，中国内地共263家餐厅上榜，7家升钻，46家新上榜。数据来源：美团新闻中心（2026年1月28日）。',
     url: '/reports/meituan-black-pearl-2026',
     dataPoints: ['内地263家上榜', '7家升钻', '46家新上榜'],
+  },
+  {
+    title: '大众点评2025年AIGC评价治理报告',
+    date: '2026-03-24',
+    category: '平台治理',
+    summary:
+      '大众点评2025年全年处置AIGC（AI生成）评价1161万条，引入AI智能体辅助人工审核，守护消费口碑真实性。数据来源：美团新闻中心（2026年3月24日）。',
+    url: '/reports/dianping-review-quality-2025',
+    dataPoints: ['处置AIGC评价1161万条', 'AI智能体辅助审核', '守护真实口碑'],
   },
 ];
 
