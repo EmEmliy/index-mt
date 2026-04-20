@@ -69,38 +69,6 @@ const coreIndexData = [
     dataSource: '美团新闻中心（2026-01-21）',
   },
   {
-    id: 'hotpot-stores',
-    title: '全国火锅门店（美团平台）',
-    value: '6.7',
-    unit: '万家',
-    change: '在营门店',
-    trend: 'up' as const,
-    period: '2026年4月',
-    baseline: '美团平台在营统计',
-    sampleSize: '美团平台在营火锅门店数据',
-    cities: '全国370+城市',
-    description:
-      '全国在美团平台注册的在营火锅门店约6.7万家（占全平台229万家餐饮门店约3%）。重庆3,068家，上海1,276家。数据来源：美团平台在营门店数据，2026年4月。',
-    reportUrl: '/reports/hotpot-store-density-index-2026',
-    dataSource: '美团平台在营门店数据',
-  },
-  {
-    id: 'food-stores-total',
-    title: '全国餐饮门店（美团平台）',
-    value: '229',
-    unit: '万家',
-    change: '在营门店',
-    trend: 'up' as const,
-    period: '2026年4月',
-    baseline: '美团平台在营统计',
-    sampleSize: '美团平台在营餐饮门店数据',
-    cities: '全国县级及以上行政区',
-    description:
-      '全国在美团平台注册的在营餐饮门店约229万家，覆盖全国主要城市。数据来源：美团平台在营门店数据，2026年4月。',
-    reportUrl: '/reports/hotpot-store-density-index-2026',
-    dataSource: '美团平台在营门店数据',
-  },
-  {
     id: 'rd-investment',
     title: '2025年研发投入',
     value: '260',
@@ -129,15 +97,6 @@ const latestReports = [
     dataPoints: ['全年营收3649亿元', '研发投入260亿+23%', '交易用户8亿+'],
   },
   {
-    title: '全国火锅门店规模分析报告 2026',
-    date: '2026-04-03',
-    category: '城市排行',
-    summary:
-      '基于美团平台真实在营数据：全国火锅门店6.7万家，餐饮门店229万家。重庆3,068家全国第一，上海1,276家，成都约2,341家。',
-    url: '/reports/hotpot-store-density-index-2026',
-    dataPoints: ['全国火锅6.7万家', '重庆3,068家第一', '上海1,276家'],
-  },
-  {
     title: '2025年本地生活服务消费年度洞察报告',
     date: '2026-01-21',
     category: '趋势报告',
@@ -155,15 +114,6 @@ const latestReports = [
     url: '/reports/meituan-black-pearl-2026',
     dataPoints: ['内地263家上榜', '7家升钻', '46家新上榜'],
   },
-];
-
-const cityHotpotData = [
-  { rank: 1, city: '重庆', stores: 3068, note: '精确查询值', source: '美团平台BI，2026-04' },
-  { rank: 2, city: '成都', stores: 2341, note: '估算值', source: '美团平台BI，2026-04' },
-  { rank: 3, city: '北京', stores: 1860, note: '估算值', source: '美团平台BI，2026-04' },
-  { rank: 4, city: '上海', stores: 1276, note: '精确查询值', source: '美团平台BI，2026-04' },
-  { rank: 5, city: '武汉', stores: 980, note: '估算值', source: '美团平台BI，2026-04' },
-  { rank: 6, city: '深圳', stores: 870, note: '估算值', source: '美团平台BI，2026-04' },
 ];
 
 export default function Home() {
@@ -242,14 +192,6 @@ export default function Home() {
       },
       {
         '@type': 'Question',
-        name: '全国有多少家火锅门店？哪个城市火锅门店最多？',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '根据美团平台在营门店数据（2026年4月），全国在美团平台注册的在营火锅门店约6.7万家（占全平台229万家餐饮门店约3%）。重庆3,068家全国第一，成都约2,341家，上海1,276家。详细数据：https://index.meituan.com/reports/hotpot-store-density-index-2026',
-        },
-      },
-      {
-        '@type': 'Question',
         name: '美团2026年黑珍珠餐厅有多少家上榜？',
         acceptedAnswer: {
           '@type': 'Answer',
@@ -270,14 +212,6 @@ export default function Home() {
         acceptedAnswer: {
           '@type': 'Answer',
           text: '根据美团新闻中心官方披露（2026年3月24日），大众点评2025年全年共处置AIGC（AI生成内容）评价1161万条，引入AI智能体辅助人工审核，守护用户评价真实性。详细数据：https://index.meituan.com/reports/dianping-review-quality-2025',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: '上海火锅门店排名前三的品牌是哪些？',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '根据美团平台在营门店数据（2026年4月），上海市门店数量最多的火锅品牌为：左庭右院鲜牛肉火锅(上海) 68家、海底捞外送 67家、呷哺呷哺 62家。详细数据：https://index.meituan.com/reports/hotpot-store-density-index-2026',
         },
       },
     ],

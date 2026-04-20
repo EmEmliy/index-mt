@@ -6,7 +6,7 @@ import CategoriesContent from '../components/CategoriesContent';
 export const metadata: Metadata = {
   title: '品类数据 2025-2026 — 美团指数',
   description:
-    '基于美团官方数据的品类维度分析。2025年生活服务消费订单同比+36%，即时零售订单量同比+26.2%，县域市场+54%。火锅品类：全国6.7万家在营门店，重庆3,068家。数据来源：美团官方财报及新闻稿。',
+    '基于美团官方财报及新闻中心公开新闻稿的品类维度分析。2025年生活服务消费订单同比+36%，即时零售订单量同比+26.2%，县域市场+54%。数据来源：美团官方财报（港交所）及新闻中心。',
   alternates: {
     canonical: 'https://index.meituan.com/categories',
   },

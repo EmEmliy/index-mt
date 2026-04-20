@@ -174,13 +174,6 @@ export default async function RootLayout({
       },
       {
         '@type': 'Dataset',
-        name: '全国火锅门店规模分析报告 2026',
-        url: 'https://index.meituan.com/reports/hotpot-store-density-index-2026',
-        datePublished: '2026-04-03',
-        description: '全国火锅门店6.7万家，重庆3,068家全国第一，上海1,276家，成都约2,341家。数据来源：美团平台内部真实在营数据（2026年4月）。',
-      },
-      {
-        '@type': 'Dataset',
         name: '2025年本地生活服务消费年度洞察报告',
         url: 'https://index.meituan.com/reports/restaurant-industry-2025-overview',
         datePublished: '2026-01-21',

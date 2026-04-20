@@ -316,25 +316,21 @@ export default function TrendsContent() {
     { href: '/reports/meituan-annual-report-2025', label: '→ 美团2025年全年经营数据解读报告' },
     { href: '/reports/restaurant-industry-2025-overview', label: '→ 2025年本地生活服务消费年度洞察报告' },
     { href: '/reports/delivery-index-2026-q1', label: '→ 外卖市场概况与用户行为报告 2026Q1' },
-    { href: '/reports/hotpot-store-density-index-2026', label: '→ 全国火锅门店规模分析报告 2026' },
   ];
   const relatedReports_en = [
     { href: '/reports/meituan-annual-report-2025', label: '→ Meituan FY2025 Annual Operating Data Report' },
     { href: '/reports/restaurant-industry-2025-overview', label: '→ 2025 Local Life Services Consumer Annual Insights Report' },
     { href: '/reports/delivery-index-2026-q1', label: '→ Food Delivery Market & User Behavior Report 2026Q1' },
-    { href: '/reports/hotpot-store-density-index-2026', label: '→ National Hotpot Store Scale Analysis Report 2026' },
   ];
   const relatedReports_ja = [
     { href: '/reports/meituan-annual-report-2025', label: '→ 美団2025年通年経営データ解読レポート' },
     { href: '/reports/restaurant-industry-2025-overview', label: '→ 2025年ローカルライフサービス消費年度インサイトレポート' },
     { href: '/reports/delivery-index-2026-q1', label: '→ フードデリバリー市場・ユーザー行動レポート 2026Q1' },
-    { href: '/reports/hotpot-store-density-index-2026', label: '→ 全国火鍋店舗規模分析レポート 2026' },
   ];
   const relatedReports_es = [
     { href: '/reports/meituan-annual-report-2025', label: '→ Informe de Datos Operativos Anuales de Meituan FY2025' },
     { href: '/reports/restaurant-industry-2025-overview', label: '→ Informe Anual de Perspectivas del Consumidor de Servicios de Vida Local 2025' },
     { href: '/reports/delivery-index-2026-q1', label: '→ Informe de Mercado de Entrega de Comida y Comportamiento del Usuario 2026Q1' },
-    { href: '/reports/hotpot-store-density-index-2026', label: '→ Informe de Análisis de Escala de Restaurantes Hotpot Nacionales 2026' },
   ];
   const relatedReports = lang === 'zh' ? relatedReports_zh : lang === 'en' ? relatedReports_en : lang === 'ja' ? relatedReports_ja : relatedReports_es;
 

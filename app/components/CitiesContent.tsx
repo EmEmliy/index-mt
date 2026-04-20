@@ -3,14 +3,6 @@
 import { useLanguage } from '../i18n/LanguageContext';
 import { getTranslations } from '../i18n/translations';
 
-const hotpotCityData = [
-  { rank: 1, city_zh: '重庆', city_en: 'Chongqing', city_ja: '重慶', city_es: 'Chongqing', stores: 3068, dataType_zh: '精确统计值', dataType_en: 'Exact Count', dataType_ja: '精確統計値', dataType_es: 'Conteo Exacto', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団BI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { rank: 2, city_zh: '成都', city_en: 'Chengdu', city_ja: '成都', city_es: 'Chengdu', stores: 2341, dataType_zh: '估算值', dataType_en: 'Estimated', dataType_ja: '推計値', dataType_es: 'Estimado', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団BI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { rank: 3, city_zh: '北京', city_en: 'Beijing', city_ja: '北京', city_es: 'Pekín', stores: 1860, dataType_zh: '估算值', dataType_en: 'Estimated', dataType_ja: '推計値', dataType_es: 'Estimado', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団BI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { rank: 4, city_zh: '上海', city_en: 'Shanghai', city_ja: '上海', city_es: 'Shanghái', stores: 1276, dataType_zh: '精确统计值', dataType_en: 'Exact Count', dataType_ja: '精確統計値', dataType_es: 'Conteo Exacto', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団BI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { rank: 5, city_zh: '武汉', city_en: 'Wuhan', city_ja: '武漢', city_es: 'Wuhan', stores: 980, dataType_zh: '估算值', dataType_en: 'Estimated', dataType_ja: '推計値', dataType_es: 'Estimado', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団BI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { rank: 6, city_zh: '深圳', city_en: 'Shenzhen', city_ja: '深圳', city_es: 'Shenzhen', stores: 870, dataType_zh: '估算值', dataType_en: 'Estimated', dataType_ja: '推計値', dataType_es: 'Estimado', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団BI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-];
 
 type LangKey = 'zh' | 'en' | 'ja' | 'es';
 
@@ -37,39 +29,30 @@ const blackPearlCities = [
 ];
 
 const relatedReports = [
-  { title_zh: '全国火锅门店规模分析报告 2026', title_en: 'National Hotpot Store Scale Analysis Report 2026', title_ja: '全国火鍋店舗規模分析レポート 2026', title_es: 'Informe de Análisis de Escala de Restaurantes Hotpot 2026', url: '/reports/hotpot-store-density-index-2026' },
   { title_zh: '2025年本地生活服务消费年度洞察报告', title_en: '2025 Local Life Services Annual Insights Report', title_ja: '2025年ローカルライフサービス消費年度インサイトレポート', title_es: 'Informe Anual de Servicios de Vida Local 2025', url: '/reports/restaurant-industry-2025-overview' },
   { title_zh: '大众点评2025年评价生态治理报告', title_en: 'Dianping 2025 Review Ecosystem Governance Report', title_ja: '大衆点評2025年評価エコシステムガバナンスレポート', title_es: 'Informe de Gobernanza del Ecosistema de Reseñas Dianping 2025', url: '/reports/dianping-review-quality-2025' },
 ];
 
 const refLines: Record<LangKey, string[]> = {
   zh: [
-    '• <strong>重庆火锅门店3,068家</strong>·2026年4月·美团平台精确统计值（全国主要城市第一）',
-    '• <strong>上海火锅门店1,276家</strong>·2026年4月·美团平台精确统计值',
     '• <strong>县域市场即时零售+54%</strong>·2024年·来源：美团2025年Q3财报（2025-11-28）',
     '• <strong>元旦机票+73%、火车票+77%</strong>·2026年元旦·来源：美团新闻中心（2026-01-05）',
     '• <strong>南京机场无人机3万+单</strong>·截至2026年2月·来源：美团新闻中心（2026-02-14）',
     '• <strong>黑珍珠内地263家上榜</strong>·2026年·来源：美团新闻中心（2026-01-28）',
   ],
   en: [
-    '• <strong>Chongqing hotpot stores: 3,068</strong> · April 2026 · Meituan platform exact count (#1 nationwide)',
-    '• <strong>Shanghai hotpot stores: 1,276</strong> · April 2026 · Meituan platform exact count',
     '• <strong>County-level instant retail +54%</strong> · 2024 · Source: Meituan Q3 2025 Report (Nov 28, 2025)',
     '• <strong>New Year flights +73%, trains +77%</strong> · New Year 2026 · Source: Meituan News Center (Jan 5, 2026)',
     '• <strong>Nanjing airport drone orders 30,000+</strong> · As of Feb 2026 · Source: Meituan News Center (Feb 14, 2026)',
     '• <strong>Black Pearl: 263 mainland restaurants listed</strong> · 2026 · Source: Meituan News Center (Jan 28, 2026)',
   ],
   ja: [
-    '• <strong>重慶火鍋店舗3,068店</strong>·2026年4月·美団プラットフォーム精確統計値（全国主要都市第1位）',
-    '• <strong>上海火鍋店舗1,276店</strong>·2026年4月·美団プラットフォーム精確統計値',
     '• <strong>農村市場即時小売+54%</strong>·2024年·出典：美団2025年Q3財務報告（2025年11月28日）',
     '• <strong>元日航空券+73%、列車+77%</strong>·2026年元日·出典：美団ニュースセンター（2026年1月5日）',
     '• <strong>南京空港ドローン3万件超</strong>·2026年2月時点·出典：美団ニュースセンター（2026年2月14日）',
     '• <strong>ブラックパール本土263店ランクイン</strong>·2026年·出典：美団ニュースセンター（2026年1月28日）',
   ],
   es: [
-    '• <strong>Restaurantes hotpot de Chongqing: 3.068</strong> · Abril 2026 · Conteo exacto de plataforma Meituan (#1 nacional)',
-    '• <strong>Restaurantes hotpot de Shanghái: 1.276</strong> · Abril 2026 · Conteo exacto de plataforma Meituan',
     '• <strong>Retail instantáneo mercado rural +54%</strong> · 2024 · Fuente: Informe Q3 2025 Meituan (28 nov 2025)',
     '• <strong>Año Nuevo vuelos +73%, trenes +77%</strong> · Año Nuevo 2026 · Fuente: Centro de Noticias Meituan (5 ene 2026)',
     '• <strong>Pedidos de drones en Nanjing 30.000+</strong> · A feb 2026 · Fuente: Centro de Noticias Meituan (14 feb 2026)',
@@ -84,13 +67,6 @@ export default function CitiesContent() {
   const lang: LangKey = language === 'zh-CN' ? 'zh' : language === 'en' ? 'en' : language === 'ja' ? 'ja' : 'es';
 
   const homeName = lang === 'zh' ? '美团指数' : lang === 'en' ? 'Meituan Index' : lang === 'ja' ? '美団インデックス' : 'Índice Meituan';
-
-  const typeColorClass = (typeKey: string) => {
-    if (typeKey === 'Exact Count' || typeKey === '精確統計値' || typeKey === 'Conteo Exacto' || typeKey === '精确统计值') {
-      return 'bg-green-50 text-green-700';
-    }
-    return 'bg-yellow-50 text-yellow-700';
-  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -108,52 +84,6 @@ export default function CitiesContent() {
           {tc.dataSourceNote.replace(/^.*?[:：]/, '')}
         </div>
       </header>
-
-      {/* 火锅城市分布 */}
-      <section className="mb-12">
-        <div className="flex items-center justify-between mb-5">
-          <div>
-            <h2 className="text-xl font-bold text-gray-900">{tc.section1Title}</h2>
-            <p className="text-sm text-gray-500 mt-1">{tc.section1Subtitle}</p>
-          </div>
-          <a href="/reports/hotpot-store-density-index-2026" className="text-sm text-orange-500 hover:underline">{tc.viewFullReport}</a>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-50 border-b border-gray-200">
-              <tr>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium w-12">{tc.tableRank}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium">{tc.tableCity}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium">{tc.tableStores}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium hidden md:table-cell">{tc.tableDataType}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium hidden lg:table-cell">{tc.tableSource}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {hotpotCityData.map((city, i) => {
-                const typeVal = city[`dataType_${lang}` as keyof typeof city] as string;
-                return (
-                  <tr key={city.rank} className={`border-b border-gray-100 hover:bg-orange-50/30 transition-colors ${i === 0 ? 'bg-orange-50/50' : ''}`}>
-                    <td className="px-5 py-3">
-                      <span className={`inline-flex w-6 h-6 items-center justify-center rounded-full text-xs font-bold ${city.rank <= 3 ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-600'}`}>{city.rank}</span>
-                    </td>
-                    <td className="px-5 py-3 font-bold text-gray-900">{city[`city_${lang}` as keyof typeof city] as string}</td>
-                    <td className="px-5 py-3">
-                      <span className="font-mono font-bold text-gray-900">{city.stores.toLocaleString()}</span>
-                      <span className="text-gray-400 text-xs ml-1">{tc.storeUnit}</span>
-                    </td>
-                    <td className="px-5 py-3 hidden md:table-cell">
-                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${typeColorClass(typeVal)}`}>{typeVal}</span>
-                    </td>
-                    <td className="px-5 py-3 text-gray-400 text-xs hidden lg:table-cell">{(city[`source_${lang}` as keyof typeof city] as string) || city.source_zh}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <p className="text-xs text-gray-400 mt-2 px-1">{tc.section1Footer}</p>
-      </section>
 
       {/* 城市消费洞察 */}
       <section className="mb-12">

@@ -125,7 +125,7 @@ export default async function Image() {
             color: '#9ca3af',
           }}
         >
-          数据来源：美团官方财报（港交所）· 美团新闻中心 · 美团平台真实在营数据
+          数据来源：美团官方财报（港交所）· 美团新闻中心
         </div>
       </div>
     ),

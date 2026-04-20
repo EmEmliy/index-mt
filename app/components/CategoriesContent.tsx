@@ -18,16 +18,7 @@ const trends2025 = [
 const instantRetailData = [
   { metric_zh: '即时零售订单量增速', metric_en: 'Instant Retail Order Growth', metric_ja: '即時小売注文量増加率', metric_es: 'Crecimiento de Pedidos Retail Instantáneo', value: '+26.2%', period_zh: '2024年全年', period_en: 'FY 2024', period_ja: '2024年通年', period_es: 'EF 2024', note_zh: '即时零售（闪购）订单量同比增长26.2%', note_en: 'Instant retail (Flash Buy) orders grew 26.2% YoY', note_ja: '即時小売（フラッシュバイ）注文量は前年比26.2%増加', note_es: 'Los pedidos de retail instantáneo (Flash Buy) crecieron un 26.2% interanual', source_zh: '美团2025年Q3财报（港交所）', source_en: 'Meituan Q3 2025 Report (HKEX)', source_ja: '美団2025年Q3財務報告（香港取引所）', source_es: 'Informe Q3 2025 de Meituan (HKEX)', date: '2025-11-28' },
   { metric_zh: '县域市场即时零售增幅', metric_en: 'Rural Market Instant Retail Growth', metric_ja: '農村市場即時小売増加率', metric_es: 'Crecimiento Retail Instantáneo Mercado Rural', value: '+54%', period_zh: '2024年全年', period_en: 'FY 2024', period_ja: '2024年通年', period_es: 'EF 2024', note_zh: '县域市场即时零售订单量同比增幅达54%，远超整体增速', note_en: 'County-level market instant retail grew 54% YoY, far exceeding overall growth', note_ja: '郡レベル市場の即時小売は前年比54%増加し、全体増速を大きく上回った', note_es: 'El retail instantáneo en mercados rurales creció un 54% interanual, muy por encima del crecimiento general', source_zh: '美团2025年Q3财报（港交所）', source_en: 'Meituan Q3 2025 Report (HKEX)', source_ja: '美団2025年Q3財務報告（香港取引所）', source_es: 'Informe Q3 2025 de Meituan (HKEX)', date: '2025-11-28' },
-  { metric_zh: '即时零售覆盖品类', metric_en: 'Instant Retail Coverage', metric_ja: '即時小売カバーカテゴリー', metric_es: 'Cobertura del Retail Instantáneo', value_zh: '全品类', value_en: 'All Categories', value_ja: '全カテゴリー', value_es: 'Todas las Categorías', value: '', period_zh: '2026年', period_en: '2026', period_ja: '2026年', period_es: '2026', note_zh: '从餐饮外卖延伸至零食饮料、生鲜果蔬、宠物用品、医药健康、美妆个护等全品类', note_en: 'Extended from food delivery to snacks, fresh produce, pet products, health/medicine, beauty, and all categories', note_ja: '飲食デリバリーからお菓子・生鮮・ペット用品・医薬品・美容など全カテゴリーに拡張', note_es: 'Extendido desde comida a domicilio a snacks, frescos, mascotas, salud/medicina, belleza y todas las categorías', source_zh: '美团平台数据', source_en: 'Meituan Platform Data', source_ja: '美団プラットフォームデータ', source_es: 'Datos de la Plataforma Meituan', date: '2026' },
-];
-
-const hotpotData = [
-  { label_zh: '全国火锅门店（美团平台在营）', label_en: 'National Hotpot Stores (Meituan Active)', label_ja: '全国火鍋店舗（美団アクティブ）', label_es: 'Restaurantes Hotpot Nacionales (Meituan Activos)', value_zh: '~6.7万家', value_en: '~67K', value_ja: '~6.7万店', value_es: '~67K', type_zh: '估算值', type_en: 'Estimated', type_ja: '推計値', type_es: 'Estimado', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団プラットフォームBI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { label_zh: '全国餐饮门店（美团平台在营）', label_en: 'National F&B Stores (Meituan Active)', label_ja: '全国飲食店舗（美団アクティブ）', label_es: 'Establecimientos F&B Nacionales (Meituan Activos)', value_zh: '229万家', value_en: '2.29M', value_ja: '229万店', value_es: '2,29M', type_zh: '精确统计值', type_en: 'Exact Count', type_ja: '精確統計値', type_es: 'Conteo Exacto', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団プラットフォームBI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { label_zh: '火锅占餐饮门店比例', label_en: 'Hotpot Share of F&B Stores', label_ja: '火鍋の飲食店舗占有率', label_es: 'Proporción de Hotpot en Establecimientos F&B', value_zh: '约2.9%', value_en: '~2.9%', value_ja: '約2.9%', value_es: '~2,9%', type_zh: '推算值', type_en: 'Derived', type_ja: '算出値', type_es: 'Derivado', source_zh: '基于以上两项推算', source_en: 'Derived from the above two', source_ja: '上記2項目から算出', source_es: 'Derivado de los dos anteriores' },
-  { label_zh: '上海火锅TOP品牌 · 左庭右院', label_en: 'Shanghai Hotpot #1 · Zuotingyouyuan', label_ja: '上海火鍋TOPブランド・左庭右院', label_es: 'Marca Hotpot #1 Shanghái · Zuotingyouyuan', value_zh: '68家', value_en: '68 outlets', value_ja: '68店', value_es: '68 locales', type_zh: '精确统计值', type_en: 'Exact Count', type_ja: '精確統計値', type_es: 'Conteo Exacto', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団プラットフォームBI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { label_zh: '上海火锅TOP品牌 · 海底捞外送', label_en: 'Shanghai Hotpot #2 · Haidilao Delivery', label_ja: '上海火鍋TOPブランド・海底撈外送', label_es: 'Marca Hotpot #2 Shanghái · Haidilao Delivery', value_zh: '67家', value_en: '67 outlets', value_ja: '67店', value_es: '67 locales', type_zh: '精确统计值', type_en: 'Exact Count', type_ja: '精確統計値', type_es: 'Conteo Exacto', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団プラットフォームBI、2026年4月', source_es: 'Meituan BI, abr 2026' },
-  { label_zh: '上海火锅TOP品牌 · 呷哺呷哺', label_en: 'Shanghai Hotpot #3 · Xiabu Xiabu', label_ja: '上海火鍋TOPブランド・呷哺呷哺', label_es: 'Marca Hotpot #3 Shanghái · Xiabu Xiabu', value_zh: '62家', value_en: '62 outlets', value_ja: '62店', value_es: '62 locales', type_zh: '精确统计值', type_en: 'Exact Count', type_ja: '精確統計値', type_es: 'Conteo Exacto', source_zh: '美团平台BI，2026年4月', source_en: 'Meituan BI, Apr 2026', source_ja: '美団プラットフォームBI、2026年4月', source_es: 'Meituan BI, abr 2026' },
+  { metric_zh: '即时零售覆盖品类', metric_en: 'Instant Retail Coverage', metric_ja: '即時小売カバーカテゴリー', metric_es: 'Cobertura del Retail Instantáneo', value_zh: '全品类', value_en: 'All Categories', value_ja: '全カテゴリー', value_es: 'Todas las Categorías', value: '', period_zh: '2026年', period_en: '2026', period_ja: '2026年', period_es: '2026', note_zh: '从餐饮外卖延伸至零食饮料、生鲜果蔬、宠物用品、医药健康、美妆个护等全品类', note_en: 'Extended from food delivery to snacks, fresh produce, pet products, health/medicine, beauty, and all categories', note_ja: '飲食デリバリーからお菓子・生鮮・ペット用品・医薬品・美容など全カテゴリーに拡張', note_es: 'Extendido desde comida a domicilio a snacks, frescos, mascotas, salud/medicina, belleza y todas las categorías', source_zh: '美团2025年Q3财报（港交所）', source_en: 'Meituan Q3 2025 Report (HKEX)', source_ja: '美団2025年Q3財務報告（香港取引所）', source_es: 'Informe Q3 2025 de Meituan (HKEX)', date: '2025-11-28' },
 ];
 
 const refData_zh = [
@@ -35,36 +26,27 @@ const refData_zh = [
   '• <strong>95后消费者占比近6成</strong>·2025年全年·来源：美团新闻中心（2026-01-21）',
   '• <strong>即时零售订单量+26.2%</strong>·2024年全年·来源：美团2025年Q3财报（2025-11-28）',
   '• <strong>县域市场即时零售+54%</strong>·2024年全年·来源：美团2025年Q3财报（2025-11-28）',
-  '• <strong>全国火锅门店约6.7万家</strong>·2026年4月·来源：美团平台在营门店数据（估算值）',
-  '• <strong>全国餐饮门店229万家</strong>·2026年4月·来源：美团平台在营门店数据（精确统计值）',
 ];
 const refData_en = [
   '• <strong>Life service orders +36%</strong> · FY2025 · Source: Meituan News Center (Jan 21, 2026)',
   '• <strong>Post-95 consumers ~60%</strong> · FY2025 · Source: Meituan News Center (Jan 21, 2026)',
   '• <strong>Instant retail orders +26.2%</strong> · FY2024 · Source: Meituan Q3 2025 Report (Nov 28, 2025)',
   '• <strong>County-level instant retail +54%</strong> · FY2024 · Source: Meituan Q3 2025 Report (Nov 28, 2025)',
-  '• <strong>National hotpot stores ~67,000</strong> · April 2026 · Source: Meituan platform active store data (estimated)',
-  '• <strong>National F&B stores 2.29 million</strong> · April 2026 · Source: Meituan platform active store data (exact)',
 ];
 const refData_ja = [
   '• <strong>生活サービス注文+36%</strong>·2025年通年·出典：美団ニュースセンター（2026年1月21日）',
   '• <strong>95年以降生まれ消費者約6割</strong>·2025年通年·出典：美団ニュースセンター（2026年1月21日）',
   '• <strong>即時小売注文+26.2%</strong>·2024年通年·出典：美団2025年Q3財務報告（2025年11月28日）',
   '• <strong>農村市場即時小売+54%</strong>·2024年通年·出典：美団2025年Q3財務報告（2025年11月28日）',
-  '• <strong>全国火鍋店舗約6.7万店</strong>·2026年4月·出典：美団プラットフォームアクティブ店舗データ（推計値）',
-  '• <strong>全国飲食店舗229万店</strong>·2026年4月·出典：美団プラットフォームアクティブ店舗データ（精確統計値）',
 ];
 const refData_es = [
   '• <strong>Pedidos de servicios +36%</strong> · EF2025 · Fuente: Centro de Noticias Meituan (21 ene 2026)',
   '• <strong>Consumidores Post-95 ~60%</strong> · EF2025 · Fuente: Centro de Noticias Meituan (21 ene 2026)',
   '• <strong>Pedidos retail instantáneo +26.2%</strong> · EF2024 · Fuente: Informe Q3 2025 Meituan (28 nov 2025)',
   '• <strong>Retail instantáneo mercado rural +54%</strong> · EF2024 · Fuente: Informe Q3 2025 Meituan (28 nov 2025)',
-  '• <strong>Restaurantes hotpot nacionales ~67.000</strong> · Abril 2026 · Fuente: Datos activos de plataforma Meituan (estimado)',
-  '• <strong>Establecimientos F&B nacionales 2,29 millones</strong> · Abril 2026 · Fuente: Datos activos de plataforma Meituan (exacto)',
 ];
 
 const relatedReports = [
-  { title_zh: '全国火锅门店规模分析报告 2026', title_en: 'National Hotpot Store Scale Analysis Report 2026', title_ja: '全国火鍋店舗規模分析レポート 2026', title_es: 'Informe de Análisis de Escala de Restaurantes Hotpot 2026', url: '/reports/hotpot-store-density-index-2026' },
   { title_zh: '2025年本地生活服务消费年度洞察报告', title_en: '2025 Local Life Services Annual Insights Report', title_ja: '2025年ローカルライフサービス消費年度インサイトレポート', title_es: 'Informe Anual de Servicios de Vida Local 2025', url: '/reports/restaurant-industry-2025-overview' },
   { title_zh: '外卖市场概况与用户行为报告 2026Q1', title_en: 'Food Delivery Market & User Behavior Report 2026Q1', title_ja: 'フードデリバリー市場・ユーザー行動レポート 2026Q1', title_es: 'Informe de Mercado de Entrega de Comida 2026Q1', url: '/reports/delivery-index-2026-q1' },
 ];
@@ -77,12 +59,6 @@ export default function CategoriesContent() {
 
   const refData = lang === 'zh' ? refData_zh : lang === 'en' ? refData_en : lang === 'ja' ? refData_ja : refData_es;
   const homeName = lang === 'zh' ? '美团指数' : lang === 'en' ? 'Meituan Index' : lang === 'ja' ? '美団インデックス' : 'Índice Meituan';
-
-  const typeColor = (typeKey: string) => {
-    if (typeKey === '精确统计值' || typeKey === 'Exact Count' || typeKey === '精確統計値' || typeKey === 'Conteo Exacto') return 'bg-green-50 text-green-700';
-    if (typeKey === '估算值' || typeKey === 'Estimated' || typeKey === '推計値' || typeKey === 'Estimado') return 'bg-yellow-50 text-yellow-700';
-    return 'bg-gray-50 text-gray-500';
-  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -148,44 +124,6 @@ export default function CategoriesContent() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* 火锅数据 */}
-      <section className="mb-12">
-        <div className="flex items-center justify-between mb-5">
-          <div>
-            <h2 className="text-xl font-bold text-gray-900">{tc.section3Title}</h2>
-            <p className="text-sm text-gray-500 mt-1">{tc.section3Subtitle}</p>
-          </div>
-          <a href="/reports/hotpot-store-density-index-2026" className="text-sm text-orange-500 hover:underline">{tc.viewFullReport}</a>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-50 border-b border-gray-200">
-              <tr>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium">{tc.tableMetric}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium">{tc.tableValue}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium hidden md:table-cell">{tc.tableType}</th>
-                <th className="text-left px-5 py-3 text-gray-500 font-medium hidden lg:table-cell">{tc.tableSource}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {hotpotData.map((row, i) => {
-                const typeVal = row[`type_${lang}` as keyof typeof row] as string;
-                return (
-                  <tr key={i} className={`border-b border-gray-100 hover:bg-orange-50/30 transition-colors ${i === 0 ? 'bg-orange-50/30' : ''}`}>
-                    <td className="px-5 py-3 font-medium text-gray-900">{row[`label_${lang}` as keyof typeof row] as string}</td>
-                    <td className="px-5 py-3 font-black text-gray-900 font-mono">{(row[`value_${lang}` as keyof typeof row] as string) || row.value_zh}</td>
-                    <td className="px-5 py-3 hidden md:table-cell">
-                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${typeColor(typeVal)}`}>{typeVal}</span>
-                    </td>
-                    <td className="px-5 py-3 text-xs text-gray-400 hidden lg:table-cell">{(row[`source_${lang}` as keyof typeof row] as string) || row.source_zh}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
         </div>
       </section>
 
