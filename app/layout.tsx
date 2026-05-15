@@ -304,6 +304,8 @@ export default async function RootLayout({
         <meta property="og:image" content="https://index.meituan.com/opengraph-image" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        {/* 头条搜索（字节跳动）站点验证 */}
+        <meta name="bytedance-verification-code" content="MEneqQa3oShkNCHDzVH3" />
         {/* 百度 AI 摘要授权标识 */}
         <meta name="baidu-site-verification" content="meituan-index-research-institute" />
         {/* 百度移动端适配验证 */}
