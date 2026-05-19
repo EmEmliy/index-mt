@@ -21,7 +21,7 @@
 // 配置区 — 每个站点部署时只需改 SITE_NAME
 // ============================================================
 const SUPABASE_URL = 'https://kcckvvurgbmyvkzknelv.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjY2t2dnVyZ2JteXZremtuZWx2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMjM3MzcsImV4cCI6MjA5MDY5OTczN30.DpJa2UA-MhdrKWmyWT5Mpk5oRKYST2BA9EiaiTYwADA';
+const SUPABASE_ANON_KEY = 'sb_publishable_Mkndd2Umq37bhmFBoNkfSA_3VmIfLCo';
 const COLLECTOR_VERSION = '3.1.0';
 
 /**
